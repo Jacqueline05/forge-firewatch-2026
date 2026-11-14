@@ -1,4 +1,4 @@
-"""A simple, tabbed prototype built on the FireWatch MVP."""
+"""A simple, tabbed prototype built on the Forge FireWatch MVP."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -23,7 +23,7 @@ DATA_DIR = ROOT / "data"
 LEVEL_COLORS = {"High": "#ff6b5f", "Medium": "#ffb454", "Low": "#8fa3b8"}
 
 st.set_page_config(
-    page_title="Borneo FireWatch · Prototype",
+    page_title="Forge FireWatch · Prototype",
     page_icon="🌿",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -168,9 +168,9 @@ if events.empty:
 st.markdown(
     """
     <div class="hero">
-      <div class="eyebrow" style="margin-top:14px">Borneo FireWatch</div>
-      <h1>Fire signals across Borneo.</h1>
-      <p>Satellite hotspots and the areas that need a closer look.</p>
+      <div class="eyebrow" style="margin-top:14px">Forge FireWatch</div>
+      <h1>Fire signals at a glance.</h1>
+      <p>Satellite hotspots and priority areas, in one view.</p>
     </div>
     """,
     unsafe_allow_html=True,

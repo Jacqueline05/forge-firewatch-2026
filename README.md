@@ -1,7 +1,9 @@
-# Borneo FireWatch — Hackathon Prototype
+# Forge FireWatch — Hackathon Prototype
 
-This is a simple prototype built from the FireWatch MVP. Use its tabs to view
-the map, a short satellite-signal summary, or submit a demo ground report.
+Forge FireWatch is designed for broader geographic monitoring. This prototype
+uses an illustrative Borneo scenario to demonstrate the core workflow. Use its
+tabs to view the map, a short satellite-signal summary, or submit a demo ground
+report.
 
 ## Run it
 
@@ -11,7 +13,7 @@ With the prototype dependencies installed:
 streamlit run app.py
 ```
 
-When this folder is inside the main FireWatch repository, run
+When this folder is inside the main Forge FireWatch repository, run
 `streamlit run prototype/app.py` instead.
 
 No login, NASA FIRMS key or live network data is required for the local demo.
@@ -27,7 +29,7 @@ To keep the prototype available when your computer is off, deploy it to
 repository:
 
 1. Sign in to Streamlit Community Cloud with GitHub.
-2. Choose **Create app**, then select `Jacqueline05/borneo-firewatch-2026`,
+2. Choose **Create app**, then select `Jacqueline05/forge-firewatch-2026`,
    branch `main`, and `app.py`.
 3. Deploy the app. Streamlit will build it using `requirements.txt` and provide
    a public `*.streamlit.app` URL that you can share.
