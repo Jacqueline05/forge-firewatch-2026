@@ -1,9 +1,7 @@
 # Borneo FireWatch — Hackathon Prototype
 
-This is a separate, presentation-focused prototype built from the current
-FireWatch MVP. It reuses the repository's tested hotspot matching, fire-area
-grouping and attention-scoring logic, while keeping this demo's report form
-isolated from the production feedback file.
+This is a simple prototype built from the FireWatch MVP. Use its tabs to view
+the map, a short satellite-signal summary, or submit a demo ground report.
 
 ## Run it
 
@@ -16,17 +14,29 @@ streamlit run app.py
 When this folder is inside the main FireWatch repository, run
 `streamlit run prototype/app.py` instead.
 
-No login, NASA FIRMS key or live network data is required. Use the sidebar's
-three-step demo flow:
+No login, NASA FIRMS key or live network data is required for the local demo.
 
-1. **Situation** — review priority areas and the overview map.
-2. **Investigate** — compare satellite detections and match status.
-3. **Ground report** — submit an example report stored only in the current
-   Streamlit session.
+The **Situation** tab shows the map and key counts. **Investigate** shows the
+latest satellite signals and matched pairs. **Ground report** keeps sample
+reports in the current Streamlit session only.
+
+## Publish it publicly
+
+To keep the prototype available when your computer is off, deploy it to
+[Streamlit Community Cloud](https://share.streamlit.io/) from this GitHub
+repository:
+
+1. Sign in to Streamlit Community Cloud with GitHub.
+2. Choose **Create app**, then select `Jacqueline05/borneo-firewatch-2026`,
+   branch `main`, and `app.py`.
+3. Deploy the app. Streamlit will build it using `requirements.txt` and provide
+   a public `*.streamlit.app` URL that you can share.
+
+Once deployed, the app and its bundled demo data run in the cloud. Demo reports
+are temporary and are not saved or sent to responders.
 
 ## Demo-data notice
 
 The bundled satellite records are fictional and the peat polygons are
 illustrative, not authoritative boundaries. The prototype is not a live
-monitoring or emergency-response tool. Ground reports are not persisted or
-sent to responders.
+monitoring or emergency-response tool.
