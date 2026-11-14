@@ -15,7 +15,6 @@ sys.path.insert(0, str(ROOT / "src"))
 from firewatch.events import build_events  # noqa: E402
 from firewatch.harmonize import harmonize  # noqa: E402
 from firewatch.loaders import load_observations  # noqa: E402
-from firewatch.peat import load_peat_layer, points_on_peat  # noqa: E402
 from firewatch.scoring import score_events  # noqa: E402
 
 
@@ -59,16 +58,9 @@ st.markdown(
 @st.cache_data
 def load_scenario() -> tuple[pd.DataFrame, pd.DataFrame]:
     observations = load_observations(DATA_DIR / "sample_hotspots.csv")
-    peat_layer = load_peat_layer(
-        DATA_DIR / "demo_peat_illustrative.geojson",
-        illustrative=True,
-    )
-    observations["on_peat"] = points_on_peat(
-        observations["latitude"], observations["longitude"], peat_layer
-    )
     matched = harmonize(observations)
     events, _ = build_events(matched)
-    return matched, score_events(events, peat_layer.available)
+    return matched, score_events(events, peat_available=False)
 
 
 def event_map(events: pd.DataFrame):
@@ -83,11 +75,11 @@ def event_map(events: pd.DataFrame):
         hover_name="event_id",
         hover_data={
             "attention_score": True,
-            "nearest_town": True,
+            "region": True,
             "detections": True,
         },
-        zoom=4.2,
-        center={"lat": 2.8, "lon": 113.1},
+        zoom=1,
+        center={"lat": 20, "lon": 0},
         height=600,
     )
     figure.update_layout(
@@ -112,7 +104,7 @@ def render_overview(events: pd.DataFrame) -> None:
     top = events.iloc[0]
     st.subheader("Top priority area")
     st.write(
-        f'{top["event_id"]} near {top["nearest_town"]} · '
+        f'{top["event_id"]} · {top["region"]} · '
         f'{top["attention_level"]} · {top["attention_score"]}/100'
     )
     st.plotly_chart(event_map(events), use_container_width=True)
@@ -134,7 +126,7 @@ def render_investigation(observations: pd.DataFrame) -> None:
 
 def render_report(events: pd.DataFrame) -> None:
     area_labels = {
-        f"{row.event_id} near {row.nearest_town}": row.event_id
+        f"{row.event_id} · {row.region}": row.event_id
         for row in events.itertuples()
     }
     with st.form("ground_report"):
@@ -170,11 +162,12 @@ st.markdown(
     <div class="hero">
       <div class="eyebrow" style="margin-top:14px">Forge FireWatch</div>
       <h1>Fire signals at a glance.</h1>
-      <p>Satellite hotspots and priority areas, in one view.</p>
+      <p>Satellite hotspots and priority areas across regions.</p>
     </div>
     """,
     unsafe_allow_html=True,
 )
+st.caption("Illustrative global sample data · not live satellite detections")
 
 situation_tab, investigate_tab, report_tab = st.tabs(
     ["Situation", "Investigate", "Ground report"]

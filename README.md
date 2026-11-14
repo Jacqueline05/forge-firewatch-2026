@@ -1,9 +1,9 @@
 # Forge FireWatch — Hackathon Prototype
 
-Forge FireWatch is designed for broader geographic monitoring. This prototype
-uses an illustrative Borneo scenario to demonstrate the core workflow. Use its
-tabs to view the map, a short satellite-signal summary, or submit a demo ground
-report.
+Forge FireWatch is designed for international fire monitoring. This prototype
+uses illustrative sample detections from regions across several continents.
+Use its tabs to view the map, a short satellite-signal summary, or submit a demo
+ground report.
 
 ## Run it
 
@@ -39,6 +39,7 @@ are temporary and are not saved or sent to responders.
 
 ## Demo-data notice
 
-The bundled satellite records are fictional and the peat polygons are
-illustrative, not authoritative boundaries. The prototype is not a live
-monitoring or emergency-response tool.
+The global satellite records are fictional, illustrative examples—not live
+detections. The bundled peat polygons only illustrate Borneo and are not used
+for scoring in this global demo. It is not a live monitoring or
+emergency-response tool.
