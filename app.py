@@ -167,8 +167,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-st.caption("Illustrative global sample data · not live satellite detections")
-
 situation_tab, investigate_tab, report_tab = st.tabs(
     ["Situation", "Investigate", "Ground report"]
 )
